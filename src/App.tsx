@@ -2,6 +2,8 @@ import React, { useState, useEffect, GetDerivedStateFromError, ChangeEvent } fro
 import { runInThisContext } from 'vm';
 import { IGitHubRepo } from "./models/IGitHubRepo";
 
+import { Input, Loader } from "./components";
+
 const githubEndpointUrl = "https://api.github.com/users/mucic/repos?per_page=50";
 
 // Fetch data from Git
@@ -31,14 +33,14 @@ function App() {
     });
   },[]);
 
-  const handleFilterChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setFilter(e.target.value);
-  }
+  // const handleFilterChange = (e: ChangeEvent<HTMLInputElement>) => {
+  //   setFilter(e.target.value);
+  // }
   return (
     <div className="app-container">
-      <input type="text" onChange={ handleFilterChange } value={filter} />
+      <Input onChange= {input => setFilter(input)} value={filter}/>
       {loading ? (
-      <p>Loading..</p>
+      <Loader/>
       ) : (
         <div className="repo-container">
           <ul>
