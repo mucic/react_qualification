@@ -21,12 +21,13 @@ function App() {
   // Get/Set state for user input
   const [filter, setFilter] = useState('');
   // Get/Set state for loader
-  const [loader, setLoader] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(()=>{
     getRepos().then((data: IGitHubRepo[])=>{
       // console.log(data);
       setRepos(data);
+      setLoading(false);
     });
   },[]);
 
@@ -36,17 +37,21 @@ function App() {
   return (
     <div className="app-container">
       <input type="text" onChange={ handleFilterChange } value={filter} />
-      <div className="repo-container">
-        <ul>
-          {repos
-            .filter((repo: IGitHubRepo) => repo.name.includes(filter))
-            .map((repo: IGitHubRepo)=>(
-              <li key={repo.id}>
-                <a href={repo.html_url}>{repo.name}</a>
-              </li>
-            ))}
-        </ul>
-      </div>
+      {loading ? (
+      <p>Loading..</p>
+      ) : (
+        <div className="repo-container">
+          <ul>
+            {repos
+              .filter((repo: IGitHubRepo) => repo.name.includes(filter))
+              .map((repo: IGitHubRepo) => (
+                <li key={repo.id}>
+                  <a href={repo.html_url}>{repo.name}</a>
+                </li>
+              ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
