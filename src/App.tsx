@@ -27,16 +27,13 @@ function App() {
 
   useEffect(()=>{
     getRepos().then((data: IGitHubRepo[])=>{
-      // console.log(data);
       setRepos(data);
       setLoading(false);
     });
   },[]);
 
-  // const handleFilterChange = (e: ChangeEvent<HTMLInputElement>) => {
-  //   setFilter(e.target.value);
-  // }
   const filterRepos: any = repos.filter((repo: any) => repo.name.includes(filter));
+
   return (
     <Page>
       <Input onChange= {input => setFilter(input)} value={filter}/>
