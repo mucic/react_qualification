@@ -2,7 +2,7 @@ import React, { useState, useEffect, GetDerivedStateFromError, ChangeEvent } fro
 import { runInThisContext } from 'vm';
 import { IGitHubRepo } from "./models/IGitHubRepo";
 
-import { Input, Loader } from "./components";
+import { Page, Input, Loader, List } from "./components";
 
 const githubEndpointUrl = "https://api.github.com/users/mucic/repos?per_page=50";
 
@@ -36,25 +36,12 @@ function App() {
   // const handleFilterChange = (e: ChangeEvent<HTMLInputElement>) => {
   //   setFilter(e.target.value);
   // }
+  const filterRepos: any = repos.filter((repo: any) => repo.name.includes(filter));
   return (
-    <div className="app-container">
+    <Page>
       <Input onChange= {input => setFilter(input)} value={filter}/>
-      {loading ? (
-      <Loader/>
-      ) : (
-        <div className="repo-container">
-          <ul>
-            {repos
-              .filter((repo: IGitHubRepo) => repo.name.includes(filter))
-              .map((repo: IGitHubRepo) => (
-                <li key={repo.id}>
-                  <a href={repo.html_url}>{repo.name}</a>
-                </li>
-              ))}
-          </ul>
-        </div>
-      )}
-    </div>
+      { loading ? <Loader/> : <List data={filterRepos} /> }
+    </Page>
   );
 }
 

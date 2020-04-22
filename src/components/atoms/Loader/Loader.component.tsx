@@ -4,7 +4,7 @@ import * as Styled from "./Loader.styles";
 function Loader(): JSX.Element {
     return (
         <Styled.Container>
-            <p>Loading</p>
+            <div className="loader"></div>
         </Styled.Container>
     )
 }

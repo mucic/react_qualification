@@ -6,7 +6,11 @@ export const Container = styled.div`
     > input {
         font-family: sans-serif;
         padding: 2px;
-        border-color: #789;
+        border-color: gold;
+        color: green;
+        font-size: larger;
         border-radius: 5px;
+        min-height: 20px;
+        min-width: 100%;
     }
 `;
