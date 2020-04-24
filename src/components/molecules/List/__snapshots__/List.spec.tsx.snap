@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List renders as expected 1`] = `
+<ul
+  className="sc-AxjAm cMzels"
+>
+  <li>
+    <a
+      href="www.google.com"
+    >
+      Repo No1
+    </a>
+  </li>
+  <li>
+    <a
+      href="www.google.com"
+    >
+      Repo No2
+    </a>
+  </li>
+  <li>
+    <a
+      href="www.google.com"
+    >
+      Repo No3
+    </a>
+  </li>
+</ul>
+`;

@@ -3,7 +3,8 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 
 import List from "./List.component";
-const repos = [
+
+export const reposData = [
     {
         id: "1",
         html_url: 'www.google.com',
@@ -21,5 +22,5 @@ const repos = [
     },
 ];
 storiesOf("List", module).add('defoult', ()=> (
-    <List data={repos} />
+    <List data={reposData} />
 ));
